@@ -1,15 +1,16 @@
-Agentie de turism:
-  -implementarea unei aplicatii pentru gestionarea unui site de agentie de turism
-  -2 tipuri de user: client si agent
-Clientul va putea realiza urmatoarele operatii:
-  -inregistrare in aplicatie
-  -vizualizeze ofertele disponibile in momentul de fata filtrand destinatiile
-  -selectarea (aplicatia trebuie sa afiseze locurile disponibile inclusiv perioada) si rezervarea unui pachet 
-  -posibilitatea de a folosi unui voucher
-  -adaugarea review la un anumit pachet
-Agentul poate sa faca: 
-  -CRUD useri
-  -CRUD pachete
-  -Rapoarte de format PDF/CSV pentru vanzarile
-  -Adaugare de promotii la pachete
-Aplicatia va fi web folosind Java - Spring si baze de date MySQL
+Travel agency:
+- Design and implement a client-server application for a travel agency. 
+- 2 types of user: client and agent
+The client will be able to do the following:
+	- Application registration
+	- View the curently available bids by filtering destinations
+	- Selection and booking a package (application must display available places including period)
+	- The ability to use a voucher
+	- Add review to a specific package booked
+The agent can do:
+	- CRUD users
+	- CRUD packages
+	- PDF format reports for sales
+	- Make promotions
+
+The application will be web using Java - Sprin and MySQL databeses
