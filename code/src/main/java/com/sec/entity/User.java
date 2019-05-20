@@ -24,7 +24,7 @@ public class User {
 	@Id
     @Column(name = "iduser", unique = true, nullable = false)	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int iduser;
+	private Long iduser;
 	
 	@Column(name="name",nullable=false)
 	private String name;
@@ -66,7 +66,7 @@ public class User {
 		super();
 	}
 
-	public User(int iduser, String name, String address, String email, String nrTel, String cnp, String username,
+	public User(Long iduser, String name, String address, String email, String nrTel, String cnp, String username,
 			String password, Set<Role> roles, List<Booking> reservations) {
 		super();
 		this.iduser = iduser;
@@ -81,11 +81,11 @@ public class User {
 		this.reservations = reservations;
 	}
 
-	public int getIduser() {
+	public Long getIduser() {
 		return iduser;
 	}
 
-	public void setIduser(int iduser) {
+	public void setIduser(Long iduser) {
 		this.iduser = iduser;
 	}
 

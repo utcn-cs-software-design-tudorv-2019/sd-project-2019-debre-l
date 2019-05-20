@@ -19,13 +19,13 @@ public class Package {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idpackage", unique = true, nullable = false)	
-	private int idpackage;
+	private Long idpackage;
 	
 	@Column(name="name",nullable=false)
 	private String name;
 	
 	@ManyToOne()
-	@JoinColumn(name="packages")
+	@JoinColumn(name="hotelid")
 	private Hotel hotel;
 	
 	@Column(name="transport",nullable=false)
@@ -44,7 +44,7 @@ public class Package {
 		super();
 	}
 
-	public Package(int idpackage, String name, Hotel hotel, String transport, float price, int stock,
+	public Package(Long idpackage, String name, Hotel hotel, String transport, float price, int stock,
 			List<Booking> reservations) {
 		super();
 		this.idpackage = idpackage;
@@ -56,11 +56,11 @@ public class Package {
 		this.reservations = reservations;
 	}
 
-	public int getIdpackage() {
+	public Long getIdpackage() {
 		return idpackage;
 	}
 
-	public void setIdpackage(int idpackage) {
+	public void setIdpackage(Long idpackage) {
 		this.idpackage = idpackage;
 	}
 

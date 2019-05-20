@@ -17,11 +17,11 @@ public class Location {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idlocation", unique = true, nullable = false)	
-	private int idlocation;
+	private Long idlocation;
 	@Column(name="country",nullable=false)
 	private String country;
-	@Column(name="address",nullable=false)
-	private String address;
+	@Column(name="city",nullable=false)
+	private String city;
 	@OneToMany(mappedBy="location",fetch=FetchType.EAGER)
 	private List<Hotel> hotels;
 	
@@ -30,19 +30,19 @@ public class Location {
 		super();
 	}
 	
-	public Location(int idlocation, String country, String address, List<Hotel> hotels) {
+	public Location(Long idlocation, String country, String city, List<Hotel> hotels) {
 		super();
 		this.idlocation = idlocation;
 		this.country = country;
-		this.address = address;
+		this.city = city;
 		this.hotels = hotels;
 	}
 
-	public int getIdlocation() {
+	public Long getIdlocation() {
 		return idlocation;
 	}
 
-	public void setIdlocation(int idlocation) {
+	public void setIdlocation(Long idlocation) {
 		this.idlocation = idlocation;
 	}
 
@@ -54,12 +54,12 @@ public class Location {
 		this.country = country;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getCity() {
+		return city;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 	public List<Hotel> getHotels() {
@@ -68,6 +68,12 @@ public class Location {
 
 	public void setHotels(List<Hotel> hotels) {
 		this.hotels = hotels;
+	}
+
+	@Override
+	public String toString() {
+		return "Location [idlocation=" + idlocation + ", country=" + country + ", city=" + city + ", hotels=" + hotels
+				+ "]";
 	}
 	
 	

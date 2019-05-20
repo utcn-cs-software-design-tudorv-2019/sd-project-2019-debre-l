@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="EN"	layout:decorator="layouts/adminMain">
+<head>
+	<title>Travel Agency - ADMIN</title>
+</head>
+<body>
+		
+	<div layout:fragment="loginContent">
+
+		<form name="addLocation" th:action="@{/addLoc}" th:object="${location}" method="post" class="form-signin">
+			<h2 class="form-signin-heading">Add a new location:</h2>
+		 	    <input type="text" id="country" name="country" th:field="*{country}" class="form-control" placeholder="Country" required="true" /> 
+			    <input type="text" id="city" name="city" th:field="*{city}" class="form-control" placeholder="City" required="true" /> 
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Registration</button>
+		</form>
+
+	</div>
+		
+</body>
+</html>

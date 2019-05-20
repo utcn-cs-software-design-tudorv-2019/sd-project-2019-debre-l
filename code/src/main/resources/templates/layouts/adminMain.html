@@ -28,11 +28,12 @@
 		    <div class="container-fluid">
 		       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				    <ul class="nav navbar-nav">
-				        <li class="active"><a href="/">Home page</a></li>
-				        <li class=""><a href="/stories">Stories</a></li>
+				        <li class="active"><a href="adminAccount">My account</a></li>
+				        <li class=""><a href="addHotel">Add hotel</a></li>
+				        <li class=""><a href="addLocation">Add location</a></li>
+				        <li class=""><a href="addPackage">Add package</a></li>
 				    </ul>
 				    <div class="navbar-text navbar-right">
-				    Welcome, <span sec:authentication="name">Anonymous </span>
 			           <form sec:authorize="isAuthenticated()" id="frmlogout" th:action="@{/logout}" method="post" class="form-inline">
 				    		| <a href="javascript:{}" onclick="document.getElementById('frmlogout').submit(); return false;">Log out</a>
 				      </form>

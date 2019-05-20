@@ -17,14 +17,14 @@ public class Booking {
 	@Id
     @Column(name = "idbooking", unique = true, nullable = false)	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idbooking;
+	private Long idbooking;
 	
 	@ManyToOne()
 	@JoinColumn(name="owner")
 	private User owner;
 	
 	@ManyToOne()
-	@JoinColumn(name="reservations")
+	@JoinColumn(name="packageid")
 	private Package bookedPackage;
 	
 	@Column(name="reservationDate",nullable=false)
@@ -38,7 +38,7 @@ public class Booking {
 		super();
 	}
 
-	public Booking(int idbooking, User owner, Package bookedPackage, Date reservationDate, boolean payed) {
+	public Booking(Long idbooking, User owner, Package bookedPackage, Date reservationDate, boolean payed) {
 		super();
 		this.idbooking = idbooking;
 		this.owner = owner;
@@ -47,11 +47,11 @@ public class Booking {
 		this.payed = payed;
 	}
 
-	public int getIdbooking() {
+	public Long getIdbooking() {
 		return idbooking;
 	}
 
-	public void setIdbooking(int idbooking) {
+	public void setIdbooking(Long idbooking) {
 		this.idbooking = idbooking;
 	}
 

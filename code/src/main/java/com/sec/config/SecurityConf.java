@@ -27,6 +27,9 @@ public class SecurityConf extends WebSecurityConfigurerAdapter {
 	public void configureAuth(AuthenticationManagerBuilder auth) throws Exception{
 		auth.userDetailsService(userService);
 	}
+	
+	@Autowired
+	private SimpleAuthenticationSuccessHandler successHandler;
 
 	
 	@Override
@@ -42,7 +45,7 @@ public class SecurityConf extends WebSecurityConfigurerAdapter {
 			.formLogin()
 				.loginPage("/login")
 				.permitAll()
-				.defaultSuccessUrl("/")
+				.successHandler(successHandler)
 				.and()
 			.logout()
 				.logoutSuccessUrl("/login?logout")

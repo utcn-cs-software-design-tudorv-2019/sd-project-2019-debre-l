@@ -19,13 +19,13 @@ public class Hotel {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idhotel", unique = true, nullable = false)	
-	private int idhotel;
+	private Long idhotel;
 	
 	@Column(name="name",nullable=false)
 	private String name;
 	
 	@ManyToOne()
-	@JoinColumn(name="hotels")
+	@JoinColumn(name="locationID")
 	private Location location;
 	
 	@Column(name="address",nullable=false)
@@ -39,7 +39,7 @@ public class Hotel {
 		super();
 	}
 	
-	public Hotel(int idhotel, String name, Location location, String address) {
+	public Hotel(Long idhotel, String name, Location location, String address) {
 		super();
 		this.idhotel = idhotel;
 		this.name = name;
@@ -47,11 +47,11 @@ public class Hotel {
 		this.address = address;
 	}
 
-	public int getIdhotel() {
+	public Long getIdhotel() {
 		return idhotel;
 	}
 
-	public void setIdhotel(int idhotel) {
+	public void setIdhotel(Long idhotel) {
 		this.idhotel = idhotel;
 	}
 
@@ -77,6 +77,12 @@ public class Hotel {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	@Override
+	public String toString() {
+		return "Hotel [idhotel=" + idhotel + ", name=" + name + ", location=" + location + ", address=" + address
+				+ ", packages=" + packages + "]";
 	}
 	
 	
