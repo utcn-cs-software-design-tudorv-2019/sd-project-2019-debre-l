@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="EN"	layout:decorator="~{layouts/clientMain}">
+<head>
+	<title>Travel Agency</title>
+	
+</style>
+</head>
+<body>
+		
+	<div layout:fragment="loginContent">
+		<h2 class="form-signin-heading">My bookings:</h2>
+        
+        <div class="row">
+		<div class="col-md-6">
+			<table class="zuitable">
+				<thead>
+					<tr>
+						<th> ID </th>
+						<th style="min-width:120px"> Hotel country </th>
+						<th style="min-width:11px"> Hotel city </th>
+						<th style="min-width:180px"> Hotel Name </th>
+						<th style="min-width:150px"> Hotel Address </th>
+						<th style="min-width:90px"> Transport</th>
+						<th> Period </th>
+						<th> Price </th>
+						<th> Quantity </th>
+						<th> Reservation date </th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="booking : ${bookings}">
+						<td><span th:text="${booking.idbooking}"> ID </span></td>
+            			<td><span th:text="${booking.bookedOffer.hotel.location.country}"> HotelCountry</span></td>
+            			<td><span th:text="${booking.bookedOffer.hotel.location.city}"> HotelCity</span></td>
+            			<td><span th:text="${booking.bookedOffer.hotel.name}"> HotelName </span></td>
+            			<td><span th:text="${booking.bookedOffer.hotel.address}"> HotelAddress </span>
+            			<td><span th:text="${booking.bookedOffer.transport}"> Transport </span>
+            			<td><span th:text="${booking.bookedOffer.period}"> Period </span> day(s)</td>
+            			<td><span th:text="${booking.bookedOffer.price}"> Price </span> EUR</td> 
+            			<td><span th:text="${booking.quantity}"> Quantity</span></td>
+            			<td><span th:text="${booking.reservationDate}"> Date</span></td>
+        			</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		
+		
+	</div>
+</body>
+</html>

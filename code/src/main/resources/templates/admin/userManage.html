@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="EN"	layout:decorator="~{layouts/adminMain}">
+<head>
+	<title>Travel Agency - ADMIN</title>
+</head>
+<body>
+		
+	<div layout:fragment="loginContent">
+
+		<form name="addLocation" th:action="@{/addAdminRole}" th:object="${alfa}" method="post" class="form-signin">
+			<h2 class="form-signin-heading">Add admin role:</h2>
+		 	   <input type="text" id="iduser" name="iduser" th:field="*{iduser}" class="form-control" placeholder="ID" required="true" /> 
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Add</button>
+		</form>
+		
+		<h2 class="form-signin-heading">Available users:</h2>
+        
+        <div class="row">
+		<div class="col-md-6">
+			<table class="table">
+				<thead>
+					<tr>
+						<th> ID </th>
+						<th> Name </th>
+						<th> Address </th>
+						<th> Email </th>
+						<th> Nr tel </th>
+						<th> CNP </th>
+						<th> Role </th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="user : ${users}">
+						<td><span th:text="${user.iduser}"> ID </span></td>
+            			<td><span th:text="${user.name}"> Name </span></td>
+            			<td><span th:text="${user.address}"> Address </span>
+            			<td><span th:text="${user.email}"> Email </span>
+            			<td><span th:text="${user.nrTel}"> Nrtel </span></td>
+            			<td><span th:text="${user.cnp}"> CNP </span></td>
+            			<td><span th:text="${user.roles}"> Role </span></td>
+            			
+        			</tr>
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+		
+</body>
+</html>

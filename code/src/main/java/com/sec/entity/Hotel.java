@@ -32,7 +32,7 @@ public class Hotel {
 	private String address;
 	
 	@OneToMany(mappedBy="hotel",fetch=FetchType.EAGER)
-	private List<Package> packages;
+	private List<Offer> offers;
 	
 	public Hotel()
 	{
@@ -82,7 +82,15 @@ public class Hotel {
 	@Override
 	public String toString() {
 		return "Hotel [idhotel=" + idhotel + ", name=" + name + ", location=" + location + ", address=" + address
-				+ ", packages=" + packages + "]";
+				+ ", packages=" + offers + "]";
+	}
+
+	public List<Offer> getOffers() {
+		return offers;
+	}
+
+	public void setOffers(List<Offer> offers) {
+		this.offers = offers;
 	}
 	
 	

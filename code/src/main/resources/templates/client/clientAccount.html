@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="EN"	layout:decorator="~{layouts/adminMain}">
+<html lang="EN"	layout:decorator="~{layouts/clientMain}">
 <head>
-	<title>Travel Agency - ADMIN</title>
+	<title>Travel Agency</title>
 </head>
 <body>
 		
@@ -34,7 +34,7 @@
 		</div>
 		
 		<h3>Update the account informations:</h3>
-			<form name="adminAccountUpdate" th:action="@{/updatedAdminAccount}" th:object="${user}" method="post" class="form-signin">
+			<form name="adminAccountUpdate" th:action="@{/updatedClientAccount}" th:object="${user}" method="post" class="form-signin">
 		 	    <input type="text" id="name" name="name" th:field="*{name}" class="form-control" placeholder="New name" /> 
 			    <input type="text" id="email" name="email" th:field="*{email}" class="form-control" placeholder="New email"  />
 			    <input type="text" id="nrTel" name="nrTel" th:field="*{nrTel}" class="form-control" placeholder="New mobile nr" /> 
@@ -44,9 +44,6 @@
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Update account</button>
 			<h6>You can leave any of them empty if you don't want to change!</h6>
 		</form>
-		
-		
-		
 	</div>
 </body>
 </html>

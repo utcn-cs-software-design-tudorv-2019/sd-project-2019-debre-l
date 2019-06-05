@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="EN"	layout:decorator="~{layouts/clientMain}">
+<head>
+	<title>Travel Agency</title>
+	
+</head>
+<body>
+		
+	<div layout:fragment="loginContent">
+		
+	
+		<h2>More info:</h2>  
+		
+			<form name="getHotel" th:action="@{/gethotelname}" th:object="${hotel}" method="post" class="form-signin">
+			<h2 class="form-signin-heading">Get more info:</h2>
+		 	    <input type="text" id="idhotel" name="idhotel" th:field="*{idhotel}" class="form-control" placeholder="ID hotel" required="true" /> 
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Display on the map</button>
+			</form>
+		
+        <h2 class="form-signin-heading">Available hotels:</h2>
+        
+        <div class="row">
+		<div class="col-md-6">
+			<table class="table">
+				<thead>
+					<tr>
+						<th> ID </th>
+						<th> Country </th>
+						<th> City </th>
+						<th> Name </th>
+						<th> Address </th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="hotel : ${hotels}">
+            			<td><span th:text="${hotel.idhotel}"> ID </span></td>
+            			<td><span th:text="${hotel.location.country}"> Country </span>
+            			<td><span th:text="${hotel.location.city}"> City </span>
+            			<td><span th:text="${hotel.name}"> Name </span></td>
+            			<td><span th:text="${hotel.address}"> Address </span></td>
+            			
+        			</tr>
+				</tbody>
+			</table>
+		</div>
+		</div>
+		
+  </body>
+</html>

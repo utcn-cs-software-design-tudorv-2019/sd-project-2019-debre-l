@@ -16,10 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.sec.entity.Location;
 import com.sec.entity.User;
 import com.sec.service.EmailService;
-import com.sec.service.LocationService;
 import com.sec.service.UserService;
 
 
@@ -29,7 +27,6 @@ public class HomeController {
     
     private UserService userService;
     private EmailService emailService;
-    private LocationService locationService;
     
     @Autowired
 	public void setEmailService(EmailService emailService) {
@@ -40,29 +37,10 @@ public class HomeController {
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
-	
-	@Autowired
-	public void setLocationService(LocationService locationService)
-	{
-		this.locationService=locationService;
-	}
     
-
 	@RequestMapping("/")
 	public String home(){
-		return "index";
-	}
-	
-	@RequestMapping("/stories")
-	public String stories(){
-		return "stories";
-	}
-	
-	@RequestMapping("/packages")
-	public String packages(Authentication authentication) {
-		//logedUser = userService.findByUsername(authentication.getName());
-		
-		return "packages";
+		return "login";
 	}
 	
 	@RequestMapping(value = "/username", method = RequestMethod.GET)
@@ -89,15 +67,11 @@ public class HomeController {
         return "auth/login";
     }
 	
-	
-	 @RequestMapping(path = "/activation/{code}", method = RequestMethod.GET)
-	    public String activation(@PathVariable("code") String code, HttpServletResponse response) {
+	@RequestMapping(path = "/activation/{code}", method = RequestMethod.GET)
+	public String activation(@PathVariable("code") String code, HttpServletResponse response) {
 		log.debug("activation started");
 		String result = userService.userActivation(code);
 		log.debug("activation terminated:"+result);
 		return "auth/login";
-	 }
-	 
-	 
-
+	}
 }

@@ -1,5 +1,7 @@
 package com.sec.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,4 +28,13 @@ public class LocationService {
 		return locationRepository.findById(ID).get();
 	}
 	
+	public Iterable<Location> getAllLocations()
+	{
+		return locationRepository.findAll();
+	}
+	
+	public Location getLocationByCity(String city)
+	{
+		return locationRepository.findByCity(city);
+	}
 }

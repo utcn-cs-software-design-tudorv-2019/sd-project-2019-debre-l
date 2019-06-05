@@ -14,12 +14,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table (name = "packages")
-public class Package {
+@Table (name = "offers")
+public class Offer {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idpackage", unique = true, nullable = false)	
-	private Long idpackage;
+    @Column(name = "idoffer", unique = true, nullable = false)	
+	private Long idoffer;
 	
 	@Column(name="name",nullable=false)
 	private String name;
@@ -37,31 +37,35 @@ public class Package {
 	@Column(name="stock",nullable=false)
 	private int stock;
 	
-	@OneToMany(mappedBy="bookedPackage",fetch=FetchType.EAGER)
+	@Column(name="period",nullable=false)
+	private int period;
+	
+	@OneToMany(mappedBy="bookedOffer",fetch=FetchType.EAGER)
 	private List<Booking> reservations;
 	
-	public Package() {
+	public Offer() {
 		super();
 	}
 
-	public Package(Long idpackage, String name, Hotel hotel, String transport, float price, int stock,
-			List<Booking> reservations) {
+	public Offer(Long idoffer, String name, Hotel hotel, String transport, float price, int stock,
+			List<Booking> reservations, int period) {
 		super();
-		this.idpackage = idpackage;
+		this.idoffer = idoffer;
 		this.name = name;
 		this.hotel = hotel;
 		this.transport = transport;
 		this.price = price;
 		this.stock = stock;
+		this.period=period;
 		this.reservations = reservations;
 	}
 
-	public Long getIdpackage() {
-		return idpackage;
+	public Long getIdoffer() {
+		return idoffer;
 	}
 
-	public void setIdpackage(Long idpackage) {
-		this.idpackage = idpackage;
+	public void setIdoffer(Long idoffer) {
+		this.idoffer = idoffer;
 	}
 
 	public String getName() {
@@ -111,8 +115,20 @@ public class Package {
 	public void setReservations(List<Booking> reservations) {
 		this.reservations = reservations;
 	}
-	
-	
+
+	public int getPeriod() {
+		return period;
+	}
+
+	public void setPeriod(int period) {
+		this.period = period;
+	}
+
+	@Override
+	public String toString() {
+		return "IDoffer=" + idoffer + ", name=" + name + ", transport=" + transport
+				+ ", price=" + price + ", stock=" + stock + ", period=" + period + "\n";
+	}	
 	
 	
 }

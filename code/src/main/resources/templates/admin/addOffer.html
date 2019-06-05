@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="EN"	layout:decorator="~{layouts/adminMain}">
+<head>
+	<title>Travel Agency - ADMIN</title>
+</head>
+<body>
+		
+	<div layout:fragment="loginContent">
+
+		<form name="addLocation" th:action="@{/addOffer}" th:object="${offer}" method="post" class="form-signin">
+			<h2 class="form-signin-heading">Add a new offer:</h2>
+		 	    <input type="text" id="name" name="name" th:field="*{name}" class="form-control" placeholder="Name" required="true" /> 
+			    <input type="text" id="transport" name="transport" th:field="*{transport}" class="form-control" placeholder="Transport" required="true" />
+			    <input type="text" id="price" name="price" th:field="*{price}" class="form-control" placeholder="Price" required="true" /> 
+			    <input type="text" id="stock" name="stock" th:field="*{stock}" class="form-control" placeholder="Stock" required="true" />   
+			    <input type="text" id="hotel" name="stock" th:field="*{hotel.idhotel}" class="form-control" placeholder="ID hotel" required="true" />
+			    <input type="text" id="period" name="period" th:field="*{period}" class="form-control" placeholder="Nr of day's" required="true" />
+			<button class="btn btn-lg btn-primary btn-block" type="submit">New offer</button>
+		</form>
+		
+		<h2 class="form-signin-heading">Available hotels:</h2>
+        
+        <div class="row">
+		<div class="col-md-6">
+			<table class="table">
+				<thead>
+					<tr>
+						<th> ID </th>
+						<th> Country </th>
+						<th> City </th>
+						<th> Name </th>
+						<th> Address </th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="hotel : ${hotels}">
+            			<td><span th:text="${hotel.idhotel}"> ID </span></td>
+            			<td><span th:text="${hotel.location.country}"> Country </span>
+            			<td><span th:text="${hotel.location.city}"> City </span>
+            			<td><span th:text="${hotel.name}"> Name </span></td>
+            			<td><span th:text="${hotel.address}"> Address </span></td>
+            			
+        			</tr>
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+		
+</body>
+</html>

@@ -1,11 +1,11 @@
 package com.sec.service;
 
+import java.util.Optional;
 import java.util.Random;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -36,7 +36,7 @@ public class UserService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		User user = findByEmail(username);
+		User user = getByEmail(username);
 		if (user == null) {
 			throw new UsernameNotFoundException(username);
 		}
@@ -44,12 +44,25 @@ public class UserService implements UserDetailsService {
 		return new UserDetailsImpl(user);
 	}
 	
-	public User findByUsername(String username)
+	public User getById(Long id) throws Exception
+	{
+		Optional<User> user = userRepository.findById(id);
+		if (user.isPresent())
+		{
+			return user.get();
+		}
+		else
+		{
+			throw new Exception("User not found");
+		}
+	}
+	
+	public User getByUsername(String username)
 	{
 		return userRepository.findByUsername(username);
 	}
 
-	public User findByEmail(String username) {
+	public User getByEmail(String username) {
 		return userRepository.findByUsername(username);
 	}
 
@@ -70,8 +83,13 @@ public class UserService implements UserDetailsService {
 		userToRegister.setActivation(generateKey());
 		userRepository.save(userToRegister);
 		
-
+		
 		return userToRegister.getActivation();
+	}
+	
+	public Iterable<User> getAllRegistredUser()
+	{
+		return userRepository.findAll();
 	}
 
 	public String generateKey()
@@ -98,5 +116,32 @@ public class UserService implements UserDetailsService {
 		return "ok";
 	}
 	
-
+	public void updateUser(User updatedUser, User newData)
+	{
+		if(!newData.getName().isEmpty())
+		{
+			updatedUser.setName(newData.getName());
+		}
+		if(!newData.getEmail().isEmpty())
+		{
+			updatedUser.setEmail(newData.getEmail());
+		}
+		if(!newData.getCnp().isEmpty())
+		{
+			updatedUser.setCnp(newData.getCnp());
+		}
+		if(!newData.getAddress().isEmpty())
+		{
+			updatedUser.setAddress(newData.getAddress());
+		}
+		if(!newData.getNrTel().isEmpty())
+		{
+			updatedUser.setNrTel(newData.getNrTel());
+		}
+		if(!newData.getPassword().isEmpty())
+		{
+			updatedUser.setPassword(newData.getPassword());
+		}
+		userRepository.save(updatedUser);
+	}
 }

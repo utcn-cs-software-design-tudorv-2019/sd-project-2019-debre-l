@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="EN"	layout:decorator="layouts/adminMain">
+<html lang="EN"	layout:decorator="~{layouts/adminMain}">
 <head>
 	<title>Travel Agency - ADMIN</title>
 </head>
@@ -7,14 +7,36 @@
 		
 	<div layout:fragment="loginContent">
 
-		<form name="addLocation" th:action="@{/addHotel}" th:object="${hotel}" method="post" class="form-signin">
-			<h2 class="form-signin-heading">Add a new location:</h2>
+		<form name="addHotel" th:action="@{/addHotel}" th:object="${hotel}" method="post" class="form-signin">
+			<h2 class="form-signin-heading">Add a new hotel:</h2>
 		 	    <input type="text" id="country" name="name" th:field="*{name}" class="form-control" placeholder="Name" required="true" /> 
 			    <input type="text" id="address" name="address" th:field="*{address}" class="form-control" placeholder="Address" required="true" /> 
 			    <input type="text" id="location" name="location" th:field="*{location.idlocation}" class="form-control" placeholder="Id location" required="true" />
 			    
-			<button class="btn btn-lg btn-primary btn-block" type="submit">Registration</button>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">New hotel</button>
 		</form>
+		
+		<h2 class="form-signin-heading">Available locations:</h2>
+        
+        <div class="row">
+		<div class="col-md-6">
+			<table class="table">
+				<thead>
+					<tr>
+						<th> ID </th>
+						<th> Country </th>
+						<th> City </th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="location : ${locations}">
+            			<td><span th:text="${location.idlocation}"> ID </span></td>
+            			<td><span th:text="${location.country}"> Country </span></td>
+            			<td><span th:text="${location.city}"> City </span></td>
+        			</tr>
+				</tbody>
+			</table>
+		</div>
 
 	</div>
 		

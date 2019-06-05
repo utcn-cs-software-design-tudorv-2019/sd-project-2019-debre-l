@@ -18,10 +18,13 @@ public class Location {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idlocation", unique = true, nullable = false)	
 	private Long idlocation;
+	
 	@Column(name="country",nullable=false)
 	private String country;
+	
 	@Column(name="city",nullable=false)
 	private String city;
+	
 	@OneToMany(mappedBy="location",fetch=FetchType.EAGER)
 	private List<Hotel> hotels;
 	

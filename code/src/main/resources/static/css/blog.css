@@ -15,12 +15,13 @@ address {
 	margin-top:20px;
 }
 
+
 #frmlogout {
 	display:inline;
 }
 
 .form-signin {
-  max-width: 330px;
+  max-width: 400px;
   padding: 15px;
   margin: 0 0 40px 0;
 }
@@ -57,3 +58,4 @@ address {
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {
     border-color: #c7b7d6;
 }
+

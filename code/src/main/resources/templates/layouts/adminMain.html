@@ -10,6 +10,7 @@
 	<title>Travel agency</title>
 	
 	<link rel="stylesheet" href="../static/css/blog.css" th:href="@{/css/blog.css}"/>
+	<link rel="stylesheet" href="../static/css/table.css" th:href="@{/css/table.css}"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
 		
 	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css' />	
@@ -28,10 +29,11 @@
 		    <div class="container-fluid">
 		       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				    <ul class="nav navbar-nav">
-				        <li class="active"><a href="adminAccount">My account</a></li>
-				        <li class=""><a href="addHotel">Add hotel</a></li>
-				        <li class=""><a href="addLocation">Add location</a></li>
-				        <li class=""><a href="addPackage">Add package</a></li>
+				        <li class="active"><a href="/admin/adminAccount">My account</a></li>
+				        <li class=""><a href="/admin/addLocation">Add location</a></li>
+				        <li class=""><a href="/admin/addHotel">Add hotel</a></li>
+				        <li class=""><a href="/admin/addOffer">Add offer</a></li>
+				        <li class=""><a href="/admin/userManage">User management</a>
 				    </ul>
 				    <div class="navbar-text navbar-right">
 			           <form sec:authorize="isAuthenticated()" id="frmlogout" th:action="@{/logout}" method="post" class="form-inline">

@@ -24,27 +24,35 @@ public class Booking {
 	private User owner;
 	
 	@ManyToOne()
-	@JoinColumn(name="packageid")
-	private Package bookedPackage;
+	@JoinColumn(name="offerid")
+	private Offer bookedOffer;
+	
+	@Column(name="quantity")
+	private int quantity;
 	
 	@Column(name="reservationDate",nullable=false)
 	private Date reservationDate;
-	
-	@Column(name="payed",nullable=false)
-	private boolean payed;
 	
 	public Booking()
 	{
 		super();
 	}
 
-	public Booking(Long idbooking, User owner, Package bookedPackage, Date reservationDate, boolean payed) {
+	public Booking(Long idbooking, User owner, Offer bookedOffer, int quantity, Date reservationDate) {
 		super();
 		this.idbooking = idbooking;
 		this.owner = owner;
-		this.bookedPackage = bookedPackage;
+		this.bookedOffer = bookedOffer;
 		this.reservationDate = reservationDate;
-		this.payed = payed;
+		this.quantity=quantity;
+	}
+	
+	public Booking(User owner, Offer bookedOffer, int quantity, Date reservationDate) {
+		super();
+		this.owner = owner;
+		this.bookedOffer = bookedOffer;
+		this.reservationDate = reservationDate;
+		this.quantity=quantity;
 	}
 
 	public Long getIdbooking() {
@@ -63,12 +71,12 @@ public class Booking {
 		this.owner = owner;
 	}
 
-	public Package getBookedPackage() {
-		return bookedPackage;
+	public Offer getBookedOffer() {
+		return bookedOffer;
 	}
 
-	public void setBookedPackage(Package bookedPackage) {
-		this.bookedPackage = bookedPackage;
+	public void setBookedOffer(Offer bookedOffer) {
+		this.bookedOffer = bookedOffer;
 	}
 
 	public Date getReservationDate() {
@@ -79,12 +87,17 @@ public class Booking {
 		this.reservationDate = reservationDate;
 	}
 
-	public boolean isPayed() {
-		return payed;
+	public int getQuantity() {
+		return quantity;
 	}
 
-	public void setPayed(boolean payed) {
-		this.payed = payed;
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	@Override
+	public String toString() {
+		return "Offer: "+bookedOffer.getName()+", quantity:"+quantity+", price:"+bookedOffer.getPrice();
 	}
 
 	

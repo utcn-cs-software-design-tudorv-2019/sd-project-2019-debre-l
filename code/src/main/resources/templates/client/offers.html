@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="EN"	layout:decorator="~{layouts/clientMain}">
+<head>
+	<title>Travel Agency</title>
+	
+</style>
+</head>
+<body>
+		
+	<div layout:fragment="loginContent">
+		
+		<h2>Filter the offers:</h2>  
+		
+			<form name="countryfilter" th:action="@{/offers}" th:object="${location}" method="post" class="form-signin">
+		 	    <input type="text" id="country" name="country" th:field="*{country}" class="form-control" placeholder="Country" /> 
+			    <input type="text" id="city" name="city" th:field="*{city}" class="form-control" placeholder="City"  />
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Display</button>
+		</form>
+		
+		<h2>Make a reservation:</h2>  
+		
+			<form name="countryfilter" th:action="@{/reservationMaked}" th:object="${booking}" method="post" class="form-signin">
+		 	    <input type="text" id="offerid" name="offerid" th:field="*{bookedOffer.idoffer}" class="form-control" placeholder="ID offer" /> 
+			    <input type="text" id="quantity" name="quantity" th:field="*{quantity}" class="form-control" placeholder="Quantity"  />
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Make reservation</button>
+		</form>
+		
+		<h2 class="form-signin-heading">Available offers:</h2>
+        
+        <div class="row">
+		<div class="col-md-6">
+			<table class="zuitable">
+				<thead>
+					<tr>
+						<th> ID </th>
+						<th style="min-width:180px"> Name </th>
+						<th> Transport </th>
+						<th style="min-width:90px"> Price</th>
+						<th> Stock </th>
+						<th> Period </th>
+						<th style="min-width:120px"> Hotel country </th>
+						<th style="min-width:11px"> Hotel city </th>
+						<th style="min-width:180px"> Hotel name </th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="oferta : ${ofertele}">
+						<td><span th:text="${oferta.idoffer}"> Name </span></td>
+            			<td><span th:text="${oferta.name}"> Name </span></td>
+            			<td><span th:text="${oferta.transport}"> Transport </span>
+            			<td><span th:text="${oferta.price}"> Price </span> EUR
+            			<td><span th:text="${oferta.stock}"> Stock </span></td>
+            			<td><span th:text="${oferta.period}"> Period </span></td>
+            			<td><span th:text="${oferta.hotel.location.country}"> HotelCountry</span></td>
+            			<td><span th:text="${oferta.hotel.location.city}"> HotelCity</span></td>
+            			<td><span th:text="${oferta.hotel.name}"> HotelName</span></td>
+        			</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		
+		
+	</div>
+</body>
+</html>
